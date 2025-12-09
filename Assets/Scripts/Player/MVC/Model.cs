@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Model : ILifeSubstract, IPlayerStats
 {
-    
-
     public float GetVelocity() => Velocity;
     public float GetJumpForce() => JumpForce;
 
@@ -45,9 +43,5 @@ public class Model : ILifeSubstract, IPlayerStats
     public void MovePlayer(Rigidbody _rb)
     {
         _rb.velocity = new Vector3(Xaxi * CurrentStats.GetVelocity(), _rb.velocity.y, Yaxi * CurrentStats.GetVelocity());
-
-
-
-
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MeshRenderer))]
 public class SpikeObstacle : MonoBehaviour,IDisable
 {
@@ -17,12 +16,14 @@ public class SpikeObstacle : MonoBehaviour,IDisable
 
     [SerializeField] private GameObject _ParticleSystem;
 
+    [SerializeField] private Animator _Anim;
+
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
         _meshRenderer = GetComponent<MeshRenderer>();
 
-        _view = new ViewPinchos(_audioSource,_ParticleSystem);
+        _view = new ViewPinchos(_audioSource,_ParticleSystem,_Anim);
 
         model = new ModelPinchos();
   
@@ -31,11 +32,11 @@ public class SpikeObstacle : MonoBehaviour,IDisable
         _view.Initialize();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Player player = collision.gameObject.GetComponent<Player>();
+            Player player = other.gameObject.GetComponent<Player>();
             if (player != null)
             {
                 StartCoroutine(DisableParticles());
@@ -50,4 +51,5 @@ public class SpikeObstacle : MonoBehaviour,IDisable
       yield return new WaitForSeconds(2);
         _ParticleSystem.SetActive(false);
     }
+
 }

@@ -15,29 +15,12 @@ public class ControllerPinchos
     }
 
     public void DamagePlayer(Player player)
-    {
-        //if (_model.IsActive == false)
-        //  return;
-
-        // EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
-
-
-
-        //player.controller.CheckDamage(_model.Damage, _model.ForceToApply);
-
-
-        // player.controller.CheckDamage(_model.Damage,_model.ForceToApply);
-
-        // _view.LifeDamageEffect();
-
+    {      
         if (!_model.IsActive) return;
 
-        // 1️⃣ Aplicar daño y fuerza al player
-        player.controller.CheckDamage(_model.Damage, _model.ForceToApply);
+        player.controller.CheckDamage(_model.Damage, _model.ForceToApply,_model.ForceMultiplier);
 
-        // 2️⃣ Activar efectos visuales y sonido del spike
         _view.LifeDamageEffect();
-
     }
 
 }

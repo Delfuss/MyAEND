@@ -59,8 +59,5 @@ public class Player : MonoBehaviour
         controller.ProcessInputs();
         model.JumpPlayer(_rb);
         model.MovePlayer(_rb);
-
-       
-
     }
 }

@@ -2,7 +2,7 @@
 
 public class ModelPinchos : IUnactiveTrap
 {
-    
+    public int ForceMultiplier { get; private set; } = 10;
     public float Damage { get; private set; } = 0.5f;
 
     public bool IsActive { get; private set; } = true;
@@ -15,8 +15,6 @@ public class ModelPinchos : IUnactiveTrap
         ForceToApply = force;
     }
 
-
-   
     public void Unactive(bool Value)
     { 
       IsActive = Value;

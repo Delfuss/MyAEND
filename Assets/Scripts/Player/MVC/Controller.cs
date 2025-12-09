@@ -28,12 +28,12 @@ public class Controller : Iinputs
         }
     }
 
-    public void CheckDamage(float damage,float force)
+    public void CheckDamage(float damage,float force,int ForceMultiplier)
     {
             _model.SubtractLife();
         
         if (_rb != null)
-            _rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+            _rb.AddForce((Vector3.up/2 + (-_rb.gameObject.transform.forward* ForceMultiplier)) * force, ForceMode.Impulse);
 
         _view?.LifeDamageSound();
     }
