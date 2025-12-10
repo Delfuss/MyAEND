@@ -19,18 +19,11 @@ public class ViewPinchos : ILifeDamage
 
     public void LifeDamageEffect()
     {
-        PlayParticles();
         PlayAudio();
         PlayAnimation();
     }
 
-    private void PlayParticles()
-    {
-        if (_particles != null)
-        {
-            _particles.SetActive(true);
-        }
-    }
+   
 
     private void PlayAudio()
     {
