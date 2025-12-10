@@ -1,55 +1,43 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class SpikeObstacle : MonoBehaviour,IDisable
+public class SpikeObstacle : MonoBehaviour
 {
-    public ModelPinchos GetModel() => model;
+    private ITrapStats _ModelInterface;
+    private ILifeDamage _ViewInterface;
+    private IDamageable _DamageInterface;
 
-    private AudioSource _audioSource;
-    private MeshRenderer _meshRenderer;
+    [SerializeField] AudioSource _AudioSource;
+    [SerializeField] GameObject _Particles;
+    [SerializeField] Animator _Animator;
 
-    private ViewPinchos _view;
-    public ModelPinchos model;
-    private ControllerPinchos controller;
-
-    [SerializeField] private GameObject _ParticleSystem;
-
-    [SerializeField] private Animator _Anim;
-
-    void Start()
+    private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _meshRenderer = GetComponent<MeshRenderer>();
 
-        _view = new ViewPinchos(_audioSource,_ParticleSystem,_Anim);
+        _ModelInterface = new ModelPinchos(0.5f,5f);
+        _ViewInterface = new ViewPinchos(_AudioSource,_Particles,_Animator);
+    }
 
-        model = new ModelPinchos();
-  
-        controller = new ControllerPinchos(model, _view);
-
-        _view.Initialize();
+    public void Initialize(ITrapStats model, ILifeDamage view, IDamageable player)
+    {
+        _ModelInterface = model;
+        _ViewInterface = view;
+        _DamageInterface = player;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            if (player != null)
-            {
-                StartCoroutine(DisableParticles());
+            print("Colisiono bien");
+            if (!other.CompareTag("Player")) return;
 
-                controller.DamagePlayer(player);
-            }
+            _DamageInterface.TakeDamage(_ModelInterface.Damage, _ModelInterface.ForceToApply, _ModelInterface.ForceMultiplier);
+
+            _ViewInterface.LifeDamageEffect();
         }
-    }
-
-    public IEnumerator DisableParticles()
-    { 
-      yield return new WaitForSeconds(2);
-        _ParticleSystem.SetActive(false);
     }
 
 }

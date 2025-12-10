@@ -1,63 +1,53 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Rigidbody))]
-
 public class Player : MonoBehaviour
 {
-    public Model GetModel() => model;
-    private AudioSource _Audios;
-    private MeshRenderer _MeshRenderer;
+    private AudioSource _audioSource;
+    private MeshRenderer _meshRenderer;
     private Rigidbody _rb;
 
-
-
-
-    View _view;
-
-   public Model model;
-
+    private View _view;
+    public Model model;
     public Controller controller;
+
+    void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _rb = GetComponent<Rigidbody>();
+
+        _view = new View(_audioSource, _meshRenderer, this);
+        model = new Model();
+        model.CurrentStats = model;
+        controller = new Controller(model, _view, _rb);
+
+        SpikeObstacle[] spikes = FindObjectsOfType<SpikeObstacle>();
+        foreach (var spike in spikes)
+        {
+         spike.Initialize(new ModelPinchos(0.5f, 100f), new ViewPinchos(spike.GetComponent<AudioSource>(), spike.gameObject, spike.GetComponent<Animator>()), controller);
+        }
+    }
+
+    void Update()
+    {
+        controller.ProcessInputs();
+        model.JumpPlayer(_rb);
+        model.MovePlayer(_rb);
+    }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
-            model.Grounded = true; 
-
-       
+            model.Grounded = true;
     }
 
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
             model.Grounded = false;
-    }
-
-
-
-
-    void Start()
-    {
-        _Audios = GetComponent<AudioSource>();
-        _MeshRenderer = GetComponent<MeshRenderer>();
-        _rb = GetComponent<Rigidbody>();
-
-        _view = new View(_Audios, _MeshRenderer, this);
-
-        model = new Model();
-
-        model.CurrentStats = model;
-
-        controller = new Controller(model, _view, _rb);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        controller.ProcessInputs();
-        model.JumpPlayer(_rb);
-        model.MovePlayer(_rb);
     }
 }

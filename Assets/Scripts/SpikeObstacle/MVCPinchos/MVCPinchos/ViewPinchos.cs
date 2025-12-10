@@ -1,39 +1,44 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+
+
 
 public class ViewPinchos : ILifeDamage
 {
     private readonly AudioSource _audioSource;
-    private readonly MeshRenderer _renderer;
-    private readonly GameObject _Particles;
+    private readonly GameObject _particles;
     private readonly Animator _animator;
+    private readonly string _animTrigger;
 
-    public ViewPinchos(AudioSource audio,GameObject _ParticlesEffect,Animator anim)
+    public ViewPinchos(AudioSource audioSource, GameObject particles, Animator animator, string animTrigger = "Attack")
     {
-        _audioSource = audio;
-        _Particles = _ParticlesEffect;
-        _animator = anim;
-    }
-
-    public void Initialize()
-    {
-        EventsTypes.EventSubscribe(EventStrings.SpikeDamage, LifeDamageEffect);
+        _audioSource = audioSource;
+        _particles = particles;
+        _animator = animator;
+        _animTrigger = animTrigger;
     }
 
     public void LifeDamageEffect()
     {
-        _Particles.SetActive(false);
-        _audioSource.Play();
-        _Particles.SetActive(true);
-        _animator.SetTrigger("Attack");
-
-
+        PlayParticles();
+        PlayAudio();
+        PlayAnimation();
     }
 
-
-
-    public void Dispose()
+    private void PlayParticles()
     {
-        EventsTypes.EventUnSubscribe(EventStrings.SpikeDamage, LifeDamageEffect);
+        if (_particles != null)
+        {
+            _particles.SetActive(true);
+        }
+    }
+
+    private void PlayAudio()
+    {
+        _audioSource?.Play();
+    }
+
+    private void PlayAnimation()
+    {
+        _animator?.SetTrigger(_animTrigger);
     }
 }

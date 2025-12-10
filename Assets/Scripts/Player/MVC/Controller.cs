@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : Iinputs
+public class Controller : Iinputs,IDamageable
 {
     private Model _model;
     private View _view;
@@ -28,12 +28,18 @@ public class Controller : Iinputs
         }
     }
 
-    public void CheckDamage(float damage,float force,int ForceMultiplier)
+    public void TakeDamage(float damage,float force,int ForceMultiplier)
     {
             _model.SubtractLife();
-        
-        if (_rb != null)
-            _rb.AddForce((Vector3.up/2 + (-_rb.gameObject.transform.forward* ForceMultiplier)) * force, ForceMode.Impulse);
+
+        Vector3 horizontalDir = -_rb.transform.forward;
+        horizontalDir.Normalize();
+
+        Vector3 horizontalForce = horizontalDir * force;
+
+        Vector3 verticalForce = Vector3.up * (force * 0.1f);
+
+        _rb.AddForce(horizontalForce + verticalForce, ForceMode.Impulse);
 
         _view?.LifeDamageSound();
     }

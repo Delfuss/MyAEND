@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 
-public class ModelPinchos : IUnactiveTrap
+public class ModelPinchos : ITrapStats
 {
-    public int ForceMultiplier { get; private set; } = 10;
-    public float Damage { get; private set; } = 0.5f;
+    public int ForceMultiplier { get; private set; }
+    public float Damage { get; private set; }
 
-    public bool IsActive { get; private set; } = true;
+    public bool IsActive { get; private set; }
 
-    public float ForceToApply { get; private set; } = 10f;
+    public float ForceToApply { get; private set; }
 
-    public ModelPinchos(float damage = 0.5f, float force = 10f)
+    public ModelPinchos(float damage, float force)
     {
         Damage = damage;
         ForceToApply = force;
-    }
-
-    public void Unactive(bool Value)
-    { 
-      IsActive = Value;
-    }
+    } 
+    
+     public void SetActive(bool value)
+     {
+        IsActive = value;
+     }
 }

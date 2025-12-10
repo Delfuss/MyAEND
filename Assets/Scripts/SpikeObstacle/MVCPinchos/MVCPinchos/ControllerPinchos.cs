@@ -1,26 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ControllerPinchos
+public class ControllerPinchos : ITrapDamageDealer
 {
-    private ModelPinchos _model;
-    private ViewPinchos _view;
+    private readonly ITrapStats _model;
 
-    public ControllerPinchos(ModelPinchos model, ViewPinchos view)
+    public ControllerPinchos(ITrapStats model)
     {
         _model = model;
-        _view = view;
     }
 
-    public void DamagePlayer(Player player)
-    {      
-        if (!_model.IsActive) return;
-
-        player.controller.CheckDamage(_model.Damage, _model.ForceToApply,_model.ForceMultiplier);
-
-        _view.LifeDamageEffect();
+    public void DealDamage(IDamageable player)
+    {
+        player.TakeDamage(_model.Damage, _model.ForceToApply, _model.ForceMultiplier);
     }
-
 }
