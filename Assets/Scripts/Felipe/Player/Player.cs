@@ -22,13 +22,21 @@ public class Player : MonoBehaviour
 
         _view = new View(_audioSource, _meshRenderer, this);
         model = new Model();
-        model.CurrentStats = model;
+        model.CurrentStats = model; 
         controller = new Controller(model, _view, _rb);
 
         SpikeObstacle[] spikes = FindObjectsOfType<SpikeObstacle>();
         foreach (var spike in spikes)
         {
-         spike.Initialize(new ModelPinchos(0.5f, 100f), new ViewPinchos(spike.GetComponent<AudioSource>(), spike.gameObject, spike.GetComponent<Animator>()), controller);
+            spike.Initialize(
+                new ModelPinchos(0.5f, 100f),
+                new ViewPinchos(
+                    spike.GetComponent<AudioSource>(),
+                    spike.gameObject,
+                    spike.GetComponent<Animator>()
+                ),
+                controller
+            );
         }
     }
 
@@ -49,5 +57,19 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
             model.Grounded = false;
+    }
+
+    public void ApplyTemporaryDecorator(PlayerStatsDecorator decorator, float duration)
+    {
+        model.CurrentStats = decorator;
+
+        StartCoroutine(RemoveDecoratorAfter(duration));
+    }
+
+    private IEnumerator RemoveDecoratorAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        model.CurrentStats = model;
     }
 }
