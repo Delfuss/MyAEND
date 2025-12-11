@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace FactoryPool
@@ -8,11 +8,11 @@ namespace FactoryPool
         public Transform Transform => this.transform;
 
         public float LifeTime { get; set; } = 9f;
+
         private float _currentLifeTime;
 
         private Action<IBullet> _returnToPoolCallback;
 
-       
         public void Initialize(Action<IBullet> returnToPoolCallback, float lifeTime)
         {
             _returnToPoolCallback = returnToPoolCallback;
@@ -30,8 +30,13 @@ namespace FactoryPool
 
             if (_currentLifeTime <= 0)
             {
-                _returnToPoolCallback?.Invoke(this);
+                Expire();
             }
+        }
+
+        private void Expire()
+        {
+            _returnToPoolCallback?.Invoke(this);
         }
 
         public void Activate() => gameObject.SetActive(true);

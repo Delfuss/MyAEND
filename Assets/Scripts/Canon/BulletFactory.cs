@@ -1,48 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace FactoryPool
 {
-    public class BulletFactory : MonoBehaviour
+    public class BulletFactory : MonoBehaviour,IBulletFactory
     {
-        public static BulletFactory Instance { get; private set; }
+        public static BulletFactory Instance { get; set; }
 
         [SerializeField] BulletLifeTime _bulletPrefab;
 
-        Pool<BulletLifeTime> _pool;
+        Pool<IBullet> _pool;
+
+       [SerializeField] BulletCollision _BulletCollision;
 
         private void Awake()
         {
             Instance = this;
 
-            _pool = new Pool<BulletLifeTime>(CreateObject, TurnOn, TurnOff, 10);
+            _pool = new Pool<IBullet>(CreateObject, TurnOn, TurnOff, 10);
+
+            _BulletCollision.Injection(this);
         }
 
-        BulletLifeTime CreateObject()
+        IBullet CreateObject()
         {
             var result = Instantiate(_bulletPrefab);
             return result;
         }
 
-        void TurnOn(BulletLifeTime b)
+        void TurnOn(IBullet b)
         {
-            b.gameObject.SetActive(true);
+            b.Activate();
         }
         
-        void TurnOff(BulletLifeTime b)
+        void TurnOff(IBullet b)
         {
-            b.gameObject.SetActive(false);
+            b.Deactivate();
         }
 
-        public BulletLifeTime GetBullet()
+        public IBullet GetBullet()
         {
             return _pool.GetObject();
         }
 
-        public void ReturnBullet(BulletLifeTime bullet)
+        public void ReturnBullet(IBullet Rbullet)
         {
-            _pool.ReturnObjectToPool(bullet);
+            _pool.ReturnObjectToPool(Rbullet);
         }
     }
 }
