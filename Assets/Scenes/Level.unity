@@ -247,9 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a51e74e7fee0446939b50094c7e2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _AudioSource: {fileID: 113322785}
-  Canon: {fileID: 113322779}
-  Position: {x: -1.1, y: 1, z: -1.5}
+  canon: {fileID: 113322779}
+  offset: {x: -0.95, y: 1, z: -0.5}
   fireRate: 2
 --- !u!82 &113322785
 AudioSource:
@@ -365,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6207fdc8560e3424e9931a02de84a84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 9
 --- !u!54 &219202075
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -393,6 +391,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &219202076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219202069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6864d4af63283499c06f76e9a07a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &290937884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6995,6 +7005,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 219202075}
+    - targetCorrespondingSourceObject: {fileID: 5361079392921961453, guid: 7714099cfebb65a46818d3bab4057e5e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 219202076}
   m_SourcePrefab: {fileID: 100100000, guid: 7714099cfebb65a46818d3bab4057e5e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

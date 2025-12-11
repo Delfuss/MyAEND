@@ -1,41 +1,31 @@
 using System.Collections;
 using UnityEngine;
+using FactoryPool;
 
-namespace FactoryPool
+public class SpawnerPool : MonoBehaviour,IAutoFire
 {
-    [RequireComponent(typeof(AudioSource))]
+    [SerializeField] private GameObject canon;
+    [SerializeField] private Vector3 offset;
+    [SerializeField] private float fireRate = 10f;
 
-    public class SpawnerPool : MonoBehaviour
+    private void Start()
     {
-        [SerializeField] AudioSource _AudioSource;
-        [SerializeField] GameObject Canon;
-        [SerializeField] Vector3 Position;
-        [SerializeField] float fireRate = 10f; // segundos
-         Rigidbody _rb;
+        StartCoroutine(AutoFire());
+    }
 
-        private void Start()
+    public IEnumerator AutoFire()
+    {
+        while (true)
         {
-            StartCoroutine(AutoFire());
-        }
+            var bullet = BulletFactory.Instance.GetBullet();
+            bullet.Transform.position = canon.transform.position + offset;
 
-        private IEnumerator AutoFire()
-        {
-            while (true)
-            {
-                var bullet = BulletFactory.Instance.GetBullet();
-                _rb = bullet.GetComponent<Rigidbody>();
-                bullet.transform.position = Canon.transform.position + Position;
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            if (rb != null)
+                rb.velocity = -bullet.Transform.forward * 10f;
 
-                if (_rb != null)
-                {
-                    _rb.velocity = -bullet.transform.forward * 10f;
-                    _AudioSource.Play();
-                }
-
-                yield return new WaitForSeconds(fireRate);
-            }
+            yield return new WaitForSeconds(fireRate);
         }
     }
 }
-
 

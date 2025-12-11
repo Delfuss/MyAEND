@@ -45,5 +45,4 @@ namespace FactoryPool
             _pool.ReturnObjectToPool(bullet);
         }
     }
-
 }

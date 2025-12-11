@@ -38,7 +38,6 @@ namespace FactoryPool
         {
             T objectToReturn;
 
-            //Si tengo algo en la lista
             if (_currentStock.Count != 0)
             {
                 //lo obtengo de la lista
@@ -56,16 +55,13 @@ namespace FactoryPool
             //lo prendo
             _turnOnCallback(objectToReturn);
 
-            //lo devuelvo
             return objectToReturn;
         }
 
         public void ReturnObjectToPool(T obj)
         {
-            //Lo apago
             _turnOffCallback(obj);
 
-            //Lo agrego a la lista
             _currentStock.Add(obj);
         }
     }

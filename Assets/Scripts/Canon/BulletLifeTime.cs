@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace FactoryPool
 {
-    public class BulletLifeTime : MonoBehaviour
+    public class BulletLifeTime : MonoBehaviour, ILifeTime, IBullet
     {
-        [SerializeField] float _lifeTime;
+        public Transform Transform => this.transform;
 
-        float _currentLifeTime;
+        public float LifeTime { get; set; } = 9f;
+        private float _currentLifeTime;
+
+        private Action<IBullet> _returnToPoolCallback;
+
+       
+        public void Initialize(Action<IBullet> returnToPoolCallback, float lifeTime)
+        {
+            _returnToPoolCallback = returnToPoolCallback;
+            LifeTime = lifeTime;
+        }
 
         private void OnEnable()
         {
-            _currentLifeTime = _lifeTime;
+            _currentLifeTime = LifeTime;
         }
 
         private void Update()
@@ -21,17 +30,11 @@ namespace FactoryPool
 
             if (_currentLifeTime <= 0)
             {
-                BulletFactory.Instance.ReturnBullet(this);
+                _returnToPoolCallback?.Invoke(this);
             }
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-              BulletFactory.Instance.ReturnBullet(this);
-              EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
-            }
-        }
+        public void Activate() => gameObject.SetActive(true);
+        public void Deactivate() => gameObject.SetActive(false);
     }
 }
