@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FactoryPool
 {
-    public class Pool<T> where T : MonoBehaviour
+    public class Pool<T> where T : IBullet
     {
         Func<T> _factoryMethod; //Aca voy a guardar COMO se crea el objeto
 

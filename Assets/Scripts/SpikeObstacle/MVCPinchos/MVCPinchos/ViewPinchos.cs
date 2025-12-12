@@ -1,20 +1,37 @@
 ﻿using UnityEngine;
 
-
-
-public class ViewPinchos : ILifeDamage
+public class ViewPinchos : IDamages,IColorable
 {
     private readonly AudioSource _audioSource;
-    private readonly GameObject _particles;
     private readonly Animator _animator;
     private readonly string _animTrigger;
+    private readonly Renderer _renderer;  // Renderer para cambiar color
+    public Color StartColor { get; private set; }
 
-    public ViewPinchos(AudioSource audioSource, GameObject particles, Animator animator, string animTrigger = "Attack")
+
+    public ViewPinchos(AudioSource audioSource, Animator animator, Renderer renderer, string animTrigger = "Attack")
     {
         _audioSource = audioSource;
-        _particles = particles;
         _animator = animator;
+        _renderer = renderer;
         _animTrigger = animTrigger;
+    }
+
+    // public IEnumerator FlashRedThenOriginal(float duration,Renderer renderer)
+    // {
+    // Color originalColor = _Renderer.material.color;
+
+    // renderer.material.color(Color.red);
+
+    // yield return new WaitForSeconds(duration);
+
+    //  _ViewInterface.SetColor(originalColor);
+    // }
+
+    public void SetColor(Color color)
+    {
+        if (_renderer != null)
+            _renderer.material.color = color;
     }
 
     public void LifeDamageEffect()
@@ -23,15 +40,14 @@ public class ViewPinchos : ILifeDamage
         PlayAnimation();
     }
 
-   
-
+  
     private void PlayAudio()
     {
-        _audioSource?.Play();
+        _audioSource.Play();
     }
 
     private void PlayAnimation()
     {
-        _animator?.SetTrigger(_animTrigger);
+        _animator.SetTrigger(_animTrigger);
     }
 }

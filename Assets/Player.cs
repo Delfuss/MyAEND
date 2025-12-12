@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Rigidbody))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     private AudioSource _audioSource;
     private MeshRenderer _meshRenderer;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         SpikeObstacle[] spikes = FindObjectsOfType<SpikeObstacle>();
         foreach (var spike in spikes)
         {
-         spike.Initialize(new ModelPinchos(0.5f, 100f), new ViewPinchos(spike.GetComponent<AudioSource>(), spike.gameObject, spike.GetComponent<Animator>()), controller);
+         spike.Initialize(new ModelPinchos(0.5f, 100f), new ViewPinchos(spike.GetComponent<AudioSource>(), spike.GetComponent<Animator>(), spike.GetComponent<Renderer>()),this);
         }
     }
 
@@ -49,5 +49,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
             model.Grounded = false;
+    }
+
+    public void TakeDamage(float damage, float force, int forceMultiplier)
+    {
+        // Aquí aplicás la lógica de daño, por ejemplo:
+        Debug.Log($"Player recibe {damage} de daño con fuerza {force} x {forceMultiplier}");
+        // Podés aplicar fuerza al Rigidbody si querés
     }
 }

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILifeDamage
-{ 
-    public void LifeDamageEffect();
-
+public interface ITag
+{
+    string Tag { get; }
 }

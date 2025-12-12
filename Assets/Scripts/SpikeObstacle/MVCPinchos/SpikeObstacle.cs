@@ -1,43 +1,57 @@
 ﻿using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(MeshRenderer))]
 public class SpikeObstacle : MonoBehaviour
 {
-    private ITrapStats _ModelInterface;
-    private ILifeDamage _ViewInterface;
-    private IDamageable _DamageInterface;
+    private ITrapStats _model;
+    private IDamages _view;
+    private IColorable _colorable;
+    private IDamageable _damageable;
 
-    [SerializeField] AudioSource _AudioSource;
-    [SerializeField] GameObject _Particles;
-    [SerializeField] Animator _Animator;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Renderer _renderer;
 
-    private void Start()
+    private void Awake()
     {
+        _model = new ModelPinchos(0.5f, 5f);
+        _view = new ViewPinchos(_audioSource, _animator, _renderer);
 
-        _ModelInterface = new ModelPinchos(0.5f,5f);
-        _ViewInterface = new ViewPinchos(_AudioSource,_Particles,_Animator);
+        _colorable = _view as IColorable;
     }
 
-    public void Initialize(ITrapStats model, ILifeDamage view, IDamageable player)
+    public void Initialize(ITrapStats model, IDamages view, IDamageable player)
     {
-        _ModelInterface = model;
-        _ViewInterface = view;
-        _DamageInterface = player;
+        _model = model;
+        _view = view;
+        _damageable = player;
+
+        _colorable = view as IColorable;
+    }
+
+    private IEnumerator FlashColor(float duration)
+    {
+        if (_colorable == null) yield break;
+
+        Color original = _renderer.material.color;
+
+        _colorable.SetColor(Color.red);
+        yield return new WaitForSeconds(duration);
+        _colorable.SetColor(original);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            print("Colisiono bien");
-            if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
 
-            _DamageInterface.TakeDamage(_ModelInterface.Damage, _ModelInterface.ForceToApply, _ModelInterface.ForceMultiplier);
+        _damageable?.TakeDamage(
+            _model.Damage,
+            _model.ForceToApply,
+            _model.ForceMultiplier
+        );
 
-            _ViewInterface.LifeDamageEffect();
-        }
+        StartCoroutine(FlashColor(1f));
+        _view.LifeDamageEffect();
     }
-
 }
