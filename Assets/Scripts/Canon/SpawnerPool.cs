@@ -8,7 +8,7 @@ public class SpawnerPool : MonoBehaviour, IAutoFire
     [SerializeField] private Vector3 offset;
     [SerializeField] private float fireRate = 10f;
 
-    private IBulletFactory _bulletFactory;  // Dependencia invertida
+    private IBulletFactory _bulletFactory;
 
     private void Start()
     {

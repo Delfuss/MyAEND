@@ -1,16 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(Animator))]
-
-
+[RequireComponent(typeof(Collider))]
 public class SpikeWall : MonoBehaviour
 {
-    private ModelWalls _model;
-    private ControllerWalls _controller;
-
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Animator animator;
+
+    private ModelWalls _model;
+    private ControllerWalls _controller;
 
     private void Awake()
     {
@@ -26,16 +23,15 @@ public class SpikeWall : MonoBehaviour
         _controller = new ControllerWalls(_model, view);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            _model.IsActive = true;
             if (_model.IsActive)
             {
                 _model.HasCollided = true;
                 _controller.Mechanism();
             }
-        }   
+        }
     }
 }

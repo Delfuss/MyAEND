@@ -13,7 +13,7 @@ namespace FactoryPool
 
         Pool<IBullet> _pool;
 
-       [SerializeField] BulletCollision _BulletCollision;
+     // private BulletCollision _BulletCollision;
 
         private void Awake()
         {
@@ -21,14 +21,20 @@ namespace FactoryPool
 
             _pool = new Pool<IBullet>(CreateObject, TurnOn, TurnOff, 10);
 
-            _BulletCollision.Injection(this);
+            //_BulletCollision.Injection(this);
         }
 
         IBullet CreateObject()
         {
             var result = Instantiate(_bulletPrefab);
+            var collision = result.GetComponent<BulletCollision>();
+            if (collision != null)
+                collision.Injection(this); // primero inyecto
+
+            // ahora sí devolvemos el IBullet para el pool
             return result;
         }
+
 
         void TurnOn(IBullet b)
         {
