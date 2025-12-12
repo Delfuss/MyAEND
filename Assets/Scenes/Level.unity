@@ -5368,7 +5368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f7b1bfe4cbc9c4e97112ffeef63906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  Move: 0
 --- !u!1001 &716224633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6139,8 +6139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _AudioSource: {fileID: 0}
-  _Particles: {fileID: 0}
   _Animator: {fileID: 0}
+  _Renderer: {fileID: 0}
 --- !u!82 &1525129128
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6436,8 +6436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _AudioSource: {fileID: 1891128394}
-  _Particles: {fileID: 553568742}
   _Animator: {fileID: 1891128391}
+  _Renderer: {fileID: 1891128398}
 --- !u!82 &1891128394
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6537,6 +6537,12 @@ AudioSource:
 --- !u!4 &1891128397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2103030685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1891128398 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
     type: 3}
   m_PrefabInstance: {fileID: 2103030685}
   m_PrefabAsset: {fileID: 0}

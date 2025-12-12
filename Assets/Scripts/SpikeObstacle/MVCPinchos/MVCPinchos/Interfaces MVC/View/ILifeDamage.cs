@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILifeDamage
+public interface IDamages
 { 
     public void LifeDamageEffect();
 
+    public void SetColor(Color color);
 }

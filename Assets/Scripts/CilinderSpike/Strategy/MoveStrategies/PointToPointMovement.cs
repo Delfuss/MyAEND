@@ -9,6 +9,6 @@ public class PointToPointMovement : MoveStrategy
 
     public override void ExecuteMove()
     {
-        _transform.Translate(_transform.right * _speed * Time.deltaTime);
+       // this._transform.position = _transform.Translate(_transform.right * _speed * Time.deltaTime);
     }
 }

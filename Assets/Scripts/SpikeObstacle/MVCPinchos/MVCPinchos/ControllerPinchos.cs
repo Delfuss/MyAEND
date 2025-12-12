@@ -9,6 +9,7 @@ public class ControllerPinchos : ITrapDamageDealer
         _model = model;
     }
 
+     
     public void DealDamage(IDamageable player)
     {
         player.TakeDamage(_model.Damage, _model.ForceToApply, _model.ForceMultiplier);
