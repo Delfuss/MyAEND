@@ -9,7 +9,6 @@ public class ModelPinchos : ITrapStats
 
     public float ForceToApply { get; private set; }
 
-    public Color StartColor { get; private set; }
 
     public ModelPinchos(float damage, float force)
     {

@@ -5,6 +5,4 @@ using UnityEngine;
 public interface IDamages
 { 
     public void LifeDamageEffect();
-
-    public void SetColor(Color color);
 }

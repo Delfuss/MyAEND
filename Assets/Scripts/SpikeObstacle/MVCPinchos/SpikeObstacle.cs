@@ -1,61 +1,57 @@
 ﻿using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(MeshRenderer))]
 public class SpikeObstacle : MonoBehaviour
 {
-    private ITrapStats _ModelInterface;
-    private IDamages _ViewInterface;
-    private IDamageable _DamageInterface;
+    private ITrapStats _model;
+    private IDamages _view;
+    private IColorable _colorable;
+    private IDamageable _damageable;
 
-    [SerializeField] AudioSource _AudioSource;
-    [SerializeField] Animator _Animator;
-    [SerializeField] Renderer _Renderer;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Renderer _renderer;
 
-
-    private void Start()
+    private void Awake()
     {
+        _model = new ModelPinchos(0.5f, 5f);
+        _view = new ViewPinchos(_audioSource, _animator, _renderer);
 
-        _ModelInterface = new ModelPinchos(0.5f,5f);
-        _ViewInterface = new ViewPinchos(_AudioSource,_Animator,_Renderer);
-
+        _colorable = _view as IColorable;
     }
 
     public void Initialize(ITrapStats model, IDamages view, IDamageable player)
     {
-        _ModelInterface = model;
-        _ViewInterface = view;
-        _DamageInterface = player;
+        _model = model;
+        _view = view;
+        _damageable = player;
+
+        _colorable = view as IColorable;
     }
 
-    private IEnumerator FlashRedThenOriginal(float duration)
+    private IEnumerator FlashColor(float duration)
     {
-        // Guardamos el color original
-        Color originalColor = _Renderer.material.color;
+        if (_colorable == null) yield break;
 
-        // Ponemos rojo
-        _ViewInterface.SetColor(Color.red);
+        Color original = _renderer.material.color;
 
-        // Esperamos el tiempo indicado
+        _colorable.SetColor(Color.red);
         yield return new WaitForSeconds(duration);
-
-        // Volvemos al color original
-        _ViewInterface.SetColor(originalColor);
+        _colorable.SetColor(original);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
 
-            _DamageInterface.TakeDamage(_ModelInterface.Damage, _ModelInterface.ForceToApply, _ModelInterface.ForceMultiplier);
+        _damageable?.TakeDamage(
+            _model.Damage,
+            _model.ForceToApply,
+            _model.ForceMultiplier
+        );
 
-            StartCoroutine(FlashRedThenOriginal(1));
-
-            _ViewInterface.LifeDamageEffect();
-        }
+        StartCoroutine(FlashColor(1f));
+        _view.LifeDamageEffect();
     }
-
 }
