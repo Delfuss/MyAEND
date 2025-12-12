@@ -6,6 +6,6 @@ public class BoostSpeedDecorator : PlayerStatsDecorator
 {
     public BoostSpeedDecorator(IPlayerStats innerStats) : base(innerStats) { }
 
-    public override float GetVelocity() => _innerStats.GetVelocity() * 2f;
+    public override float GetVelocity() => _innerStats.GetVelocity() * 4f;
 }
 
