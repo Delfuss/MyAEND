@@ -4,21 +4,17 @@ using UnityEngine;
 
 public class View : ILifeSubstractSound
 {
-
     private AudioSource _AudioSource;
     private MeshRenderer _Renderer;
-    private MonoBehaviour _mono; // Para coroutines
+    private MonoBehaviour _mono;
 
 
     public View(AudioSource Audio, MeshRenderer Renderer,MonoBehaviour mono)
     {
-        EventsTypes.EventSubscribe(EventStrings.PlayerDamage, LifeDamageSound);
         _AudioSource = Audio;
         _Renderer = Renderer;
         _mono = mono;
-    }
-
-    
+    }    
 
 
     public void LifeDamageSound()
@@ -26,8 +22,6 @@ public class View : ILifeSubstractSound
        _AudioSource.Play();
         _mono.StartCoroutine(ChangeColorDamage());
     }
-
-
 
     public IEnumerator ChangeColorDamage()
     {

@@ -8,14 +8,13 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        // Creamos las estrategias fuera de ChangeStrategy
+        // Array de Estrategias de la abstraccion MoveStrategy
         MoveStrategy[] strategies = new MoveStrategy[]
         {
             new PointToPointMovement(spikeTransform, 1f),
             new StaticMovement(spikeTransform, 200f)
         };
 
-        // Inyectamos las estrategias y el SpikeStrategy
         changeStrategy.Initialize(spike, strategies, 2f);
     }
 }

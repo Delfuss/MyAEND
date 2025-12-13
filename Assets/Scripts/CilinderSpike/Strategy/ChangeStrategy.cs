@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ChangeStrategy : MonoBehaviour
 {
-    private MoveStrategy[] _strategies;      // estrategias inyectadas
-    private SpikeStrategy _spikeStrategy;    // Spike que ejecuta las estrategias
+    private MoveStrategy[] _strategies;   
+    private SpikeStrategy _spikeStrategy;
     private int _currentIndex = 0;
     private float _changeTime = 2f;
 
@@ -25,7 +25,6 @@ public class ChangeStrategy : MonoBehaviour
             {
                 _spikeStrategy.SetStrategy(_strategies[_currentIndex]);
 
-                // Rotación circular
                 _currentIndex = (_currentIndex + 1) % _strategies.Length;
             }
 

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamageable
 
         _view = new View(_audioSource, _meshRenderer, this);
         model = new Model();
-        model.CurrentStats = model;
+       // model.CurrentStats = model;
         controller = new Controller(model, _view, _rb);
 
         SpikeObstacle[] spikes = FindObjectsOfType<SpikeObstacle>();
@@ -35,8 +35,8 @@ public class Player : MonoBehaviour, IDamageable
     void Update()
     {
         controller.ProcessInputs();
-        model.JumpPlayer(_rb);
-        model.MovePlayer(_rb);
+        controller.JumpPlayer(_rb);
+        controller.MovePlayer(_rb);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -57,4 +57,9 @@ public class Player : MonoBehaviour, IDamageable
         Debug.Log($"Player recibe {damage} de daño con fuerza {force} x {forceMultiplier}");
         // Podés aplicar fuerza al Rigidbody si querés
     }
+
+    public void MovePlayer(Rigidbody _rb)
+    {
+        _rb.velocity = new Vector3(_model.Xaxi * CurrentStats.GetVelocity(), _rb.velocity.y, _model.Yaxi * CurrentStats.GetVelocity());
+    }                    
 }

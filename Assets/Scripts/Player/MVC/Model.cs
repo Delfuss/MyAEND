@@ -2,46 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Model : ILifeSubstract, IPlayerStats
+public class Model :  IPlayerStats,IMoreStats
 {
-    public float GetVelocity() => Velocity;
-    public float GetJumpForce() => JumpForce;
+    public float Velocity { get; private set; } = 5f;
 
-    public float Xaxi = 5f;
+    public float Xaxi { get; set; } = 5f;
 
-    public float Yaxi = 5;
+    public float Yaxi { get; set; } = 5f;
 
-    public float Velocity = 5f;
+    public float JumpForce { get; private set; } = 4f;
 
-    public float JumpForce = 4f;
+    public bool Jump { get; set; } = false;
 
-    public bool Jump;
+    public bool Grounded { get; set; } = true;
 
-    public bool Grounded;
-
-
-    public int life = 4;
-
-    public IPlayerStats CurrentStats;
-
-    public void SubtractLife()
-    {
-        life--;
-        EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
-    }
-
-    public void JumpPlayer(Rigidbody _rb)
-    {
-        if (Grounded && Jump)
-        {
-            _rb.AddForce(Vector3.up * CurrentStats.GetJumpForce(), ForceMode.Impulse);
-
-            Jump = false;
-        }
-    }
-
-    public void MovePlayer(Rigidbody _rb)
-    {
-        _rb.velocity = new Vector3(Xaxi * CurrentStats.GetVelocity(), _rb.velocity.y, Yaxi * CurrentStats.GetVelocity());
-    }
+    public int life { get; private set; } = 4;
 }

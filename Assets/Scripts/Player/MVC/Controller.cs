@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : Iinputs,IDamageable
+public class Controller : Iinputs,IDamageable, ILifeSubstract
 {
     private Model _model;
     private View _view;
     private Rigidbody _rb;
+
+    public IPlayerStats CurrentStats;
+
     public Controller(Model model, View view, Rigidbody rb)
     {
         _model = model;
@@ -14,6 +17,21 @@ public class Controller : Iinputs,IDamageable
         _rb = rb;
     }
 
+    public void SubtractLife()
+    {
+        _model.life--;
+        EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
+    }
+
+    public void JumpPlayer(Rigidbody _rb)
+    {
+        if (_model.Grounded && _model.Jump)
+        {
+            _rb.AddForce(Vector3.up * CurrentStats.GetJumpForce(), ForceMode.Impulse);
+
+            _model.Jump = false;
+        }
+    } 
 
     public void ProcessInputs()
     {
@@ -30,7 +48,6 @@ public class Controller : Iinputs,IDamageable
 
     public void TakeDamage(float damage,float force,int ForceMultiplier)
     {
-            _model.SubtractLife();
 
         Vector3 horizontalDir = -_rb.transform.forward;
         horizontalDir.Normalize();

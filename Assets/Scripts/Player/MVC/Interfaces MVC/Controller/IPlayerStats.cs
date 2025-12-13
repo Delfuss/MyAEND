@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IPlayerStats 
 {
-    float GetVelocity();
-    float GetJumpForce();
+    float Velocity { get; }
+    float JumpForce { get; }
+    bool Jump { get; }
+    int life { get; }
 }
