@@ -5330,6 +5330,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 663095401}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb7742cf5bffd5f4caec4ff061391244,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663095403}
   m_SourcePrefab: {fileID: 100100000, guid: eb7742cf5bffd5f4caec4ff061391244, type: 3}
 --- !u!1 &663095397 stripped
 GameObject:
@@ -5384,8 +5388,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e627593567e844fbafba747fa6b4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeStrategy: {fileID: 663095399}
-  changeTime: 2
+--- !u!4 &663095402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb7742cf5bffd5f4caec4ff061391244,
+    type: 3}
+  m_PrefabInstance: {fileID: 663095396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &663095403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663095397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a7229b3c27e0144a18f1e303600691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeStrategy: {fileID: 663095401}
+  spike: {fileID: 663095399}
+  spikeTransform: {fileID: 663095402}
 --- !u!1001 &716224633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6452,9 +6475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 1891128394}
+  _animator: {fileID: 1891128391}
+  _renderer: {fileID: 1891128398}
 --- !u!82 &1891128394
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6554,6 +6577,12 @@ AudioSource:
 --- !u!4 &1891128397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2103030685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1891128398 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
     type: 3}
   m_PrefabInstance: {fileID: 2103030685}
   m_PrefabAsset: {fileID: 0}

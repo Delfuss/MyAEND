@@ -6,15 +6,15 @@ public class SpikeStrategy : MonoBehaviour
 {
     MoveStrategy _MoveStrategy;
 
-    private void LateUpdate()
-    {
-       _MoveStrategy.ExecuteMove();
-    }
 
+    private void Update()
+    {
+        if (_MoveStrategy != null) _MoveStrategy.ExecuteMove();
+
+    }
 
     public void SetStrategy(MoveStrategy _Strategy)
     { 
-      _MoveStrategy = _Strategy;
-    
+      _MoveStrategy = _Strategy;  
     }
 }
