@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class DeadSystem : MonoBehaviour,ITag
 {
-    private ILoad Load;
+    private ILoad _Load;
 
-    [SerializeField] Load s;  
+    [SerializeField] Load LoadScript;  
     public string Tag { get; private set; } = "Obstacle";
 
     [SerializeField] int IndexToLoad;
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag(Tag))
+        if (other.gameObject.CompareTag(Tag))
         {
-            s.LoadScene(IndexToLoad);
+            LoadScript.StartCoroutine(LoadScript.LoadScene(IndexToLoad));
         }
     } 
 }

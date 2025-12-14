@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ILoad
 {
-   public void LoadScene( int Index);
+   public IEnumerator LoadScene( int Index);
 }

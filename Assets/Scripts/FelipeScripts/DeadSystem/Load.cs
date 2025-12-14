@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class Load : MonoBehaviour,ILoad
 {
     public List<string> SceneName = new List<string>();
-    public void LoadScene( int Index)
+    public IEnumerator LoadScene( int Index)
     {
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneName[Index]);
     }
 }
