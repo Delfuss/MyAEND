@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ILifeSubstractSound
 {
-    public void LifeDamageSound();
+    public void PlayAudio();
 }

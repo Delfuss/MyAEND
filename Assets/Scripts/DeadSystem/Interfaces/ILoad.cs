@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInputsAxis
+public interface ILoad
 {
-    float Xaxi { get; }
-    float Yaxi { get; }
+   public void LoadScene( int Index);
 }

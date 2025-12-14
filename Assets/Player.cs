@@ -1,65 +1,76 @@
-using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(MeshRenderer))]
-[RequireComponent(typeof(Rigidbody))]
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour
 {
-    private AudioSource _audioSource;
-    private MeshRenderer _meshRenderer;
-    private Rigidbody _rb;
-
+    private Model _model;
     private View _view;
-    public Model model;
-    public Controller controller;
+    private Controller _controller;
+    private Rigidbody _rb;
+    private AudioSource _audio;
+    private MeshRenderer _renderer;
 
-    void Start()
+    void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _meshRenderer = GetComponent<MeshRenderer>();
+        // Obtener componentes necesarios
         _rb = GetComponent<Rigidbody>();
+        _audio = GetComponent<AudioSource>();
+        _renderer = GetComponent<MeshRenderer>();
 
-        _view = new View(_audioSource, _meshRenderer, this);
-        model = new Model();
-       // model.CurrentStats = model;
-        controller = new Controller(model, _view, _rb);
-
-        SpikeObstacle[] spikes = FindObjectsOfType<SpikeObstacle>();
-        foreach (var spike in spikes)
+        if (_rb == null || _audio == null || _renderer == null)
         {
-         spike.Initialize(new ModelPinchos(0.5f, 100f), new ViewPinchos(spike.GetComponent<AudioSource>(), spike.GetComponent<Animator>(), spike.GetComponent<Renderer>()),this);
+            Debug.LogError("Faltan componentes necesarios en Player (Rigidbody, AudioSource o MeshRenderer)");
+            return;
         }
+
+        // Crear modelo
+        _model = new Model();
+
+        // Crear vista y pasar dependencias concretas
+        _view = new View(_audio, _renderer, this);
+
+        // Crear controlador y pasar dependencias
+        _controller = new Controller(_model, _view, _rb);
     }
 
     void Update()
     {
-        controller.ProcessInputs();
-        controller.JumpPlayer(_rb);
-        controller.MovePlayer(_rb);
+        if (_controller == null) return;
+
+        // Delegar lógica al controlador
+        _controller.ProcessInputs();
+        _controller.MovePlayer(_rb);
+        _controller.JumpPlayer(_rb);
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
-            model.Grounded = true;
+            _model.SetGrounded(true);
     }
 
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
-            model.Grounded = false;
+            _model.SetGrounded(false);
     }
 
-    public void TakeDamage(float damage, float force, int forceMultiplier)
+    // Métodos públicos para acceder a la vista desde otras clases si se necesita
+    public void PlayDamageAudio()
     {
-        // Aquí aplicás la lógica de daño, por ejemplo:
-        Debug.Log($"Player recibe {damage} de daño con fuerza {force} x {forceMultiplier}");
-        // Podés aplicar fuerza al Rigidbody si querés
+        _view.PlayAudio();
     }
 
-    public void MovePlayer(Rigidbody _rb)
+    public void FlashDamageColor()
     {
-        _rb.velocity = new Vector3(_model.Xaxi * CurrentStats.GetVelocity(), _rb.velocity.y, _model.Yaxi * CurrentStats.GetVelocity());
-    }                    
+        _view.ChangeColor();
+    }
+
+    // Método para restar vida
+    public void TakeDamage(int amount)
+    {
+        _model.SetLife(amount);
+        PlayDamageAudio();
+        FlashDamageColor();
+    }
 }
+

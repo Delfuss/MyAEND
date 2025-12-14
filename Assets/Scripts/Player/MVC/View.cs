@@ -1,32 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+
 
 public class View : ILifeSubstractSound
 {
-    private AudioSource _AudioSource;
-    private MeshRenderer _Renderer;
-    private MonoBehaviour _mono;
+    private AudioSource _audioSource;
+    private MeshRenderer _renderer;
+    private MonoBehaviour _monoBehaviour;
 
-
-    public View(AudioSource Audio, MeshRenderer Renderer,MonoBehaviour mono)
+    public View(AudioSource audioSource, MeshRenderer renderer, MonoBehaviour monoBehaviour)
     {
-        _AudioSource = Audio;
-        _Renderer = Renderer;
-        _mono = mono;
-    }    
-
-
-    public void LifeDamageSound()
-    { 
-       _AudioSource.Play();
-        _mono.StartCoroutine(ChangeColorDamage());
+        _audioSource = audioSource;
+        _renderer = renderer;
+        _monoBehaviour = monoBehaviour;
     }
 
-    public IEnumerator ChangeColorDamage()
+    public void PlayAudio()
     {
-        _Renderer.material.color = Color.red;
+        _audioSource.Play();
+    }
+
+    public void ChangeColor()
+    {
+        _monoBehaviour.StartCoroutine(ChangeColorDamage());
+    }
+
+    private IEnumerator ChangeColorDamage()
+    {
+        _renderer.material.color = Color.red;
         yield return new WaitForSeconds(0.5f);
-        _Renderer.material.color = Color.white;
+        _renderer.material.color = Color.white;
     }
 }

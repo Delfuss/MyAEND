@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : Iinputs,IDamageable, ILifeSubstract
+public class Controller : Iinputs, IPlayerMovement, IPlayerState
 {
     private Model _model;
     private View _view;
     private Rigidbody _rb;
-
-    public IPlayerStats CurrentStats;
 
     public Controller(Model model, View view, Rigidbody rb)
     {
@@ -17,47 +13,39 @@ public class Controller : Iinputs,IDamageable, ILifeSubstract
         _rb = rb;
     }
 
-    public void SubtractLife()
-    {
-        _model.life--;
-        EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
-    }
-
-    public void JumpPlayer(Rigidbody _rb)
-    {
-        if (_model.Grounded && _model.Jump)
-        {
-            _rb.AddForce(Vector3.up * CurrentStats.GetJumpForce(), ForceMode.Impulse);
-
-            _model.Jump = false;
-        }
-    } 
-
     public void ProcessInputs()
     {
-       
-       _model.Xaxi = Input.GetAxis("Horizontal");
+        _model.Xaxi = Input.GetAxis("Horizontal");
         _model.Yaxi = Input.GetAxis("Vertical");
 
         if (Input.GetKeyDown(KeyCode.Space) && _model.Grounded)
         {
             _model.Jump = true;
-
         }
     }
 
-    public void TakeDamage(float damage,float force,int ForceMultiplier)
+    public void MovePlayer(Rigidbody rb)
     {
+        Vector3 movement = new Vector3(_model.Xaxi, 0, _model.Yaxi);
+        rb.MovePosition(rb.position + movement * _model.Velocity * Time.deltaTime);
+    }
 
-        Vector3 horizontalDir = -_rb.transform.forward;
-        horizontalDir.Normalize();
+    public void JumpPlayer(Rigidbody rb)
+    {
+        if (_model.Grounded && _model.Jump)
+        {
+            rb.AddForce(Vector3.up * _model.JumpForce, ForceMode.Impulse);
+            _model.Jump = false;
+        }
+    }
 
-        Vector3 horizontalForce = horizontalDir * force;
+    public void SetGrounded(bool value)
+    {
+        _model.SetGrounded(value);
+    }
 
-        Vector3 verticalForce = Vector3.up * (force * 0.1f);
-
-        _rb.AddForce(horizontalForce + verticalForce, ForceMode.Impulse);
-
-        _view?.LifeDamageSound();
+    public void SetLife(int value)
+    {
+        _model.SetLife(value);
     }
 }
