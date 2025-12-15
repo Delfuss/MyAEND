@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class View : ILifeSubstractSound,IAnimationsStates
+public class View : ILifeSubstractSound,IAnimationsStates, IPlayAnimation
 {
     private AudioSource _audioSource;
     private MeshRenderer _renderer;
@@ -26,6 +26,7 @@ public class View : ILifeSubstractSound,IAnimationsStates
         if (_model.Jump == true)
         {
           _Animation.SetTrigger("Jump");
+            Debug.Log("funciono:)");
         }
     }
 

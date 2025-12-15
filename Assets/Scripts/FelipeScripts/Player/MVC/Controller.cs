@@ -18,24 +18,17 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
         _model.Xaxi = Input.GetAxis("Horizontal");
         _model.Yaxi = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Space) && _model.Grounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             _model.Jump = true;
+            Debug.Log("funciono");
         }
     }
 
     public void MovePlayer(Rigidbody rb)
     {
-        Vector3 movement = new Vector3(_model.Xaxi, 0, 0);
+        Vector3 movement = new Vector3(_model.Xaxi, 0, 0.4f);
         rb.MovePosition(rb.position + movement * _model.Velocity * Time.deltaTime);
-    }
-
-    public void f()
-    {
-        if (_model.Grounded == true && Input.GetKeyDown(KeyCode.Space))
-        { 
-          _model.Jump = true;
-        }
     }
 
     public void JumpPlayer(Rigidbody rb)
