@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerStatsDecorator : IPlayerStats
+public abstract class PlayerStatsDecorator //: //IPlayerStats
 {
     protected IPlayerStats _innerStats;
 
@@ -11,7 +11,7 @@ public abstract class PlayerStatsDecorator : IPlayerStats
         _innerStats = innerStats;
     }
 
-    public virtual float GetVelocity() => _innerStats.GetVelocity();
-    public virtual float GetJumpForce() => _innerStats.GetJumpForce();
+   // public virtual float GetVelocity() => _innerStats.GetVelocity();
+   // public virtual float GetJumpForce() => _innerStats.GetJumpForce();
 }
 

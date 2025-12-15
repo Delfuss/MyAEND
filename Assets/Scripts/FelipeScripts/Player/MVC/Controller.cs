@@ -27,7 +27,7 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
 
     public void MovePlayer(Rigidbody rb)
     {
-        Vector3 movement = new Vector3(_model.Xaxi, 0, 0.4f);
+        Vector3 movement = new Vector3(_model.Xaxi, 0, 0.8f);
         rb.MovePosition(rb.position + movement * _model.Velocity * Time.deltaTime);
     }
 
