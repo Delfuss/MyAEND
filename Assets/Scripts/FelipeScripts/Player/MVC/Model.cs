@@ -4,7 +4,6 @@ public class Model : IPlayerStats
     public float JumpForce { get; private set; } = 4f;
     public bool Jump { get; set; } = false;
     public float Xaxi { get; set; } = 5f;
-    public float Yaxi { get; set; } = 5f;
 
     private int _life = 4;
     private bool _grounded = true;

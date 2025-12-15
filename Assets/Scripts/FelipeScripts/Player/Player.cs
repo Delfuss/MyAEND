@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
     private IPlayerMovement _movement;
     private IPlayerState _state;
     private IPlayAnimation _view;
-    private Animator _anim;
 
     private Rigidbody _rb;
+   public Controller controller;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         var anim = GetComponent<Animator>();
         Model model = new Model();
        View view = new View(audio, renderer, this,anim,model);
-        Controller controller = new Controller(model, view, _rb);
+         controller = new Controller(model, view, _rb);
 
         _input = controller;
         _movement = controller;
@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
     {
         _input.ProcessInputs();
 
-       // _view.PlayAnimation();
     }
 
     private void FixedUpdate()

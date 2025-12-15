@@ -27670,8 +27670,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.678854, y: 5.0000005, z: 3.6788547}
-  m_Center: {x: 0.00000047683713, y: 2.3325813, z: -0.000021219254}
+  m_Size: {x: 3.678854, y: 13.065589, z: 40.478107}
+  m_Center: {x: 0.00000038384033, y: 6.3653755, z: 13.404219}
 --- !u!1 &931838858
 GameObject:
   m_ObjectHideFlags: 0
@@ -34379,8 +34379,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.695125, y: 3.6951258, z: 3.6951258}
-  m_Center: {x: 0.00000006985856, y: 1.6559356, z: -0.000000049350344}
+  m_Size: {x: 11.189601, y: 40.57997, z: 4.063792}
+  m_Center: {x: 3.7472236, y: 5.1175957, z: 0.18433447}
 --- !u!1 &1205729452
 GameObject:
   m_ObjectHideFlags: 0
@@ -57774,7 +57774,7 @@ PrefabInstance:
     - target: {fileID: 6003144724700302401, guid: 3c390a7ea5c6bf14a9cc418c9c2442b7,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8643204125282603701, guid: 3c390a7ea5c6bf14a9cc418c9c2442b7,
         type: 3}
