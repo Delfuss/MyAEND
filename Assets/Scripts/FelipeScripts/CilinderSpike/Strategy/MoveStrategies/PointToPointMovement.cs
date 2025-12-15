@@ -14,7 +14,7 @@ public class PointToPointMovement : MoveStrategy
     public PointToPointMovement(Transform transform, float speed) : base(transform, speed)
     {
          StartPos = transform.position;
-         EndPos = transform.position + new Vector3 (0,0,3);
+         EndPos = transform.position + new Vector3 (2,0,0);
          t = 0;
     }
 
