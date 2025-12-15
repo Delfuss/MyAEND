@@ -34,9 +34,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         _input.ProcessInputs();
+        _view.PlayAnimation();
+    }
+
+    private void FixedUpdate()
+    {
         _movement.MovePlayer(_rb);
         _movement.JumpPlayer(_rb);
-        _view.PlayAnimation();
     }
 
     private void OnCollisionEnter(Collision collision)
