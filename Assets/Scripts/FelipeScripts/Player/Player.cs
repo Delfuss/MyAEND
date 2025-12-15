@@ -31,10 +31,11 @@ public class Player : MonoBehaviour
         _view = view;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         _input.ProcessInputs();
-        _view.PlayAnimation();
+
+       // _view.PlayAnimation();
     }
 
     private void FixedUpdate()

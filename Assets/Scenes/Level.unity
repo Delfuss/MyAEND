@@ -1545,9 +1545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &35365863
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1644,6 +1644,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &35365864 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 35365857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &38516708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5248,9 +5254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &197287573
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7807,9 +7813,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &324051196
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20627,9 +20633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &604389147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22706,9 +22712,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &732103930
 AudioSource:
   m_ObjectHideFlags: 0
@@ -24333,9 +24339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &786642742
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26067,9 +26073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &881048867
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27365,9 +27371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &920916305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31757,9 +31763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &1062470969
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35563,9 +35569,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &1255974996
 AudioSource:
   m_ObjectHideFlags: 0
@@ -40661,9 +40667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &1481700559
 AudioSource:
   m_ObjectHideFlags: 0
@@ -51567,9 +51573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 35365863}
+  _animator: {fileID: 35365860}
+  _renderer: {fileID: 35365864}
 --- !u!82 &1944149903
 AudioSource:
   m_ObjectHideFlags: 0

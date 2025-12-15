@@ -35,6 +35,7 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
         if (_model.Grounded && _model.Jump)
         {
             rb.AddForce(Vector3.up * _model.JumpForce, ForceMode.Impulse);
+            _view.PlayAnimation();
             _model.Jump = false;
         }
     }
