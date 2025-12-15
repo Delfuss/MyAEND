@@ -11,9 +11,9 @@ public class DeadSystem : MonoBehaviour,ITag
     public string Tag { get; private set; } = "Obstacle";
 
     [SerializeField] int IndexToLoad;
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag(Tag))
+        if (collision.gameObject.CompareTag(Tag))
         {
             LoadScript.StartCoroutine(LoadScript.LoadScene(IndexToLoad));
         }
