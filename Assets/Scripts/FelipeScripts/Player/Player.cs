@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -14,6 +15,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody _rb;
    public Controller controller;
+    public Model model;
+    public View view;
+
 
     private void Awake()
     {
@@ -21,8 +25,8 @@ public class Player : MonoBehaviour
         var audio = GetComponent<AudioSource>();
         var renderer = GetComponent<MeshRenderer>();
         var anim = GetComponent<Animator>();
-        Model model = new Model();
-       View view = new View(audio, renderer, this,anim,model);
+         model = new Model();
+         view = new View(audio, renderer, this,anim,model);
          controller = new Controller(model, view, _rb);
 
         _input = controller;
@@ -34,6 +38,8 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         _input.ProcessInputs();
+
+        if (model.PlaySound == true) view.PlayAudio();
 
     }
 

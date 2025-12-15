@@ -8,6 +8,8 @@ public class Model : IPlayerStats
     private int _life = 4;
     private bool _grounded = true;
 
+    public bool PlaySound { get; set; }
+
     public int Life
     {
         get { return _life; }

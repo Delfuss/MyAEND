@@ -35,6 +35,7 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
         {
             rb.AddForce(Vector3.up * _model.JumpForce, ForceMode.Impulse);
             _view.PlayAnimation();
+            _model.PlaySound = true;
             _model.Jump = false;
         }
     }

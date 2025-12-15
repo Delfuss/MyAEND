@@ -24,7 +24,6 @@ public class View : IPlayAnimation
         if (_model.Jump == true)
         {
           _Animation.SetTrigger("Jump");
-            Debug.Log("funciono:)");
         }
     }
 
