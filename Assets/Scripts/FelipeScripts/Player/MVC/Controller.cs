@@ -26,8 +26,16 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
 
     public void MovePlayer(Rigidbody rb)
     {
-        Vector3 movement = new Vector3(_model.Xaxi, 0, _model.Yaxi);
+        Vector3 movement = new Vector3(_model.Xaxi, 0, 0);
         rb.MovePosition(rb.position + movement * _model.Velocity * Time.deltaTime);
+    }
+
+    public void f()
+    {
+        if (_model.Grounded == true && Input.GetKeyDown(KeyCode.Space))
+        { 
+          _model.Jump = true;
+        }
     }
 
     public void JumpPlayer(Rigidbody rb)

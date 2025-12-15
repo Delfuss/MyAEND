@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(Animator))]
+
 public class Player : MonoBehaviour
 {
     private Iinputs _input;
@@ -16,9 +18,9 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         var audio = GetComponent<AudioSource>();
         var renderer = GetComponent<MeshRenderer>();
-
+        var anim = GetComponent<Animator>();
         Model model = new Model();
-        View view = new View(audio, renderer, this);
+        View view = new View(audio, renderer, this,anim,model);
         Controller controller = new Controller(model, view, _rb);
 
         _input = controller;
