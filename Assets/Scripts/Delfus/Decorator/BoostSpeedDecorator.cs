@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoostSpeedDecorator : PlayerStatsDecorator
+public class SpeedBoostDecorator  : PlayerStatsDecorator
 {
-    public BoostSpeedDecorator(IPlayerStats innerStats) : base(innerStats) { }
+    private float _multiplier;
 
-   // public override float GetVelocity() => _innerStats.GetVelocity() * 4f;
+    public SpeedBoostDecorator (IPlayerStats stats, float multiplier)
+        : base(stats)
+    {
+        _multiplier = multiplier;
+    }
+
+    public override float Velocity => base.Velocity * _multiplier;
 }
 

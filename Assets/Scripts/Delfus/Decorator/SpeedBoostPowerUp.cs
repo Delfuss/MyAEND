@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class SpeedBoostPowerUp : MonoBehaviour
 {
-    [SerializeField] private AudioSource sound;
-    [SerializeField] private float duration = 5f;
+    public float duration = 5f;
+    public float speedMultiplier = 2f;
 
-   // private void OnTriggerEnter(Collider other)
-   // {
-       // if (other.TryGetComponent<Player>(out var player))
-       // {
-           // sound?.Play();
+    private AudioSource _audio;
 
-            //player.ApplyTemporaryDecorator(
-               // new BoostSpeedDecorator(player.model.CurrentStats),
-              //  duration
-         //   );
+    private void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
-          //  Destroy(gameObject);
-       // }
-   // }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Player>(out var player))
+        {
+            player.ApplyTemporaryDecorator(
+                stats => new SpeedBoostDecorator(stats, speedMultiplier),
+                duration
+            );
+
+            _audio.Play();
+            Destroy(gameObject, _audio.clip.length);
+        }
+    }
 }

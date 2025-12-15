@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,56 +8,88 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Iinputs _input;
-    private IPlayerMovement _movement;
-    private IPlayerState _state;
-    private IPlayAnimation _view;
+    private Model _baseModel;              
+    private IPlayerStats _currentStats;        
 
+    private Controller _controller;
     private Rigidbody _rb;
-   public Controller controller;
-    public Model model;
-    public View view;
 
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        var audio = GetComponent<AudioSource>();
-        var renderer = GetComponent<MeshRenderer>();
-        var anim = GetComponent<Animator>();
-         model = new Model();
-         view = new View(audio, renderer, this,anim,model);
-         controller = new Controller(model, view, _rb);
+        _audioSource = GetComponent<AudioSource>();
 
-        _input = controller;
-        _movement = controller;
-        _state = controller;
-        _view = view;
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        Animator animator = GetComponent<Animator>();
+
+        _baseModel = new Model();
+        _currentStats = _baseModel;
+
+        View view = new View(_audioSource, renderer, this, animator, _baseModel);
+
+        _controller = new Controller(_baseModel, view, _rb);
     }
 
     private void LateUpdate()
     {
-        _input.ProcessInputs();
-
-        if (model.PlaySound == true) view.PlayAudio();
-
+        _controller.ProcessInputs();
     }
 
     private void FixedUpdate()
     {
-        _movement.MovePlayer(_rb);
-        _movement.JumpPlayer(_rb);
+        _controller.MovePlayer(_rb);
+        _controller.JumpPlayer(_rb);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
-            _state.SetGrounded(true);
+            _controller.SetGrounded(true);
     }
 
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
-            _state.SetGrounded(false);
+            _controller.SetGrounded(false);
+    }
+
+    public void ApplyTemporaryDecorator(
+        System.Func<IPlayerStats, IPlayerStats> decoratorFactory,
+        float duration)
+    {
+        StopAllCoroutines(); 
+
+        _currentStats = decoratorFactory(_currentStats);
+        ApplyStatsToModel(_currentStats);
+
+        StartCoroutine(RemoveDecoratorAfter(duration));
+    }
+
+    private IEnumerator RemoveDecoratorAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        _currentStats = _baseModel;
+        _baseModel.ResetStats();
+    }
+
+    private void ApplyStatsToModel(IPlayerStats stats)
+    {
+        _baseModel.ApplyStats(
+            stats.Velocity,
+            stats.JumpForce
+        );
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+        _audioSource.PlayOneShot(clip);
+    }
+    public void SetInputStrategy(IInputStrategy strategy)
+    {
+        _controller.SetInputStrategy(strategy);
     }
 }
