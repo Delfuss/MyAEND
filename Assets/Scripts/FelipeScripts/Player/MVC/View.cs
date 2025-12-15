@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class View : ILifeSubstractSound,IAnimationsStates, IPlayAnimation
+public class View : IPlayAnimation
 {
     private AudioSource _audioSource;
     private MeshRenderer _renderer;
@@ -19,31 +19,16 @@ public class View : ILifeSubstractSound,IAnimationsStates, IPlayAnimation
         _model = model;
     }
 
-    public bool AJump { get; private set; }
-
     public void PlayAnimation()
     {
         if (_model.Jump == true)
         {
           _Animation.SetTrigger("Jump");
-            Debug.Log("funciono:)");
         }
     }
 
     public void PlayAudio()
     {
         _audioSource.Play();
-    }
-
-    public void ChangeColor()
-    {
-        _monoBehaviour.StartCoroutine(ChangeColorDamage());
-    }
-
-    private IEnumerator ChangeColorDamage()
-    {
-        _renderer.material.color = Color.red;
-        yield return new WaitForSeconds(0.5f);
-        _renderer.material.color = Color.white;
     }
 }

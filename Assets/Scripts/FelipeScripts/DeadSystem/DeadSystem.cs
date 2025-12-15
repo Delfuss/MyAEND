@@ -17,5 +17,13 @@ public class DeadSystem : MonoBehaviour,ITag
         {
             LoadScript.StartCoroutine(LoadScript.LoadScene(IndexToLoad));
         }
-    } 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(Tag))
+        {
+            LoadScript.StartCoroutine(LoadScript.LoadScene(IndexToLoad));
+        }
+    }
 }
