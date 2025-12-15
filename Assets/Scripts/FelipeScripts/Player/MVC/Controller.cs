@@ -21,7 +21,6 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _model.Jump = true;
-            Debug.Log("funciono");
         }
     }
 
