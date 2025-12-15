@@ -6,6 +6,8 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
     private View _view;
     private Rigidbody _rb;
 
+    private IInputStrategy _inputStrategy = new NormalInputStrategy(); 
+
     public Controller(Model model, View view, Rigidbody rb)
     {
         _model = model;
@@ -13,10 +15,15 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
         _rb = rb;
     }
 
+    public void SetInputStrategy(IInputStrategy strategy)
+    {
+        _inputStrategy = strategy;
+    }
+
     public void ProcessInputs()
     {
-        _model.Xaxi = Input.GetAxis("Horizontal");
-        _model.Yaxi = Input.GetAxis("Vertical");
+        _model.Xaxi = _inputStrategy.GetHorizontal();
+        _model.Yaxi = _inputStrategy.GetVertical();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -26,7 +33,7 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
 
     public void MovePlayer(Rigidbody rb)
     {
-        Vector3 movement = new Vector3(_model.Xaxi, 0, 0.8f);
+        Vector3 movement = new Vector3(_model.Xaxi, 0, _model.Yaxi);
         rb.MovePosition(rb.position + movement * _model.Velocity * Time.deltaTime);
     }
 
@@ -44,7 +51,6 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
     {
         _model.SetGrounded(value);
     }
-
     public void SetLife(int value)
     {
         _model.SetLife(value);

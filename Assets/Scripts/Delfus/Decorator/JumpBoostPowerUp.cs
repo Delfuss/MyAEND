@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class JumpBoostPowerUp : MonoBehaviour
 {
-    [SerializeField] private AudioSource sound;
-    [SerializeField] private float duration = 5f;
+    public float duration = 5f;
+    public float jumpMultiplier = 2f;
 
-   // private void OnTriggerEnter(Collider other)
-   // {
-       // if (other.TryGetComponent<Player>(out var player))
-       // {
-           // sound?.Play();
+    private AudioSource _audio;
 
-           // player.ApplyTemporaryDecorator(
-              //  new JumpBoostDecorator(player.model.CurrentStats),
-               // duration
-          //  );
+    private void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
-          //  Destroy(gameObject);
-        //}
-   // }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Player>(out var player))
+        {
+            player.ApplyTemporaryDecorator(
+                stats => new JumpBoostDecorator(stats, jumpMultiplier),
+                duration
+            );
+
+            _audio.Play();
+            Destroy(gameObject, _audio.clip.length);
+        }
+    }
 }

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class JumpBoostDecorator : PlayerStatsDecorator
 {
-    public JumpBoostDecorator(IPlayerStats innerStats) : base(innerStats) { }
+    private float _multiplier;
 
-    //public override float GetJumpForce() => _innerStats.GetJumpForce() * 5f;
+    public JumpBoostDecorator(IPlayerStats stats, float multiplier)
+        : base(stats)
+    {
+        _multiplier = multiplier;
+    }
+
+    public override float JumpForce => _wrappedStats.JumpForce * _multiplier;
 }

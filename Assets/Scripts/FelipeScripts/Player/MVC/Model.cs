@@ -1,22 +1,37 @@
+using UnityEngine;
+
 public class Model : IPlayerStats
 {
-    public float Velocity { get; private set; } = 5f;
-    public float JumpForce { get; private set; } = 4f;
-    public bool Jump { get; set; } = false;
-    public float Xaxi { get; set; } = 5f;
-    public float Yaxi { get; set; } = 5f;
+    private float _baseVelocity = 5f;
+    private float _baseJumpForce = 4f;
+
+    public float Velocity { get; private set; }
+    public float JumpForce { get; private set; }
+
+    public bool Jump { get; set; }
+    public float Xaxi { get; set; }
+    public float Yaxi { get; set; }
 
     private int _life = 4;
     private bool _grounded = true;
 
-    public int Life
+    public int Life => _life;
+    public bool Grounded => _grounded;
+
+    public Model()
     {
-        get { return _life; }
+        ResetStats();
     }
 
-    public bool Grounded
+    public void ResetStats()
     {
-        get { return _grounded; }
+        Velocity = _baseVelocity;
+        JumpForce = _baseJumpForce;
+    }
+    public void ApplyStats(float velocity, float jumpForce)
+    {
+        Velocity = velocity;
+        JumpForce = jumpForce;
     }
 
     public void SetGrounded(bool value)
@@ -27,9 +42,6 @@ public class Model : IPlayerStats
     public void SetLife(int value)
     {
         _life -= value;
-        if (_life < 0)
-        {
-            _life = 0;
-        }
+        if (_life < 0) _life = 0;
     }
 }

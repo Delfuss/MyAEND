@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class SlowPowerUp : MonoBehaviour
 {
-    [SerializeField] private AudioSource sound;
-    [SerializeField] private float duration = 5f;
+    public float duration = 5f;
+    public float slowMultiplier = 0.5f;
 
-   // private void OnTriggerEnter(Collider other)
-   // {
-      //  if (other.TryGetComponent<Player>(out var player))
-      //  {
-          //  sound?.Play();
+    private AudioSource _audio;
 
-          //  player.ApplyTemporaryDecorator(
-            //    new SlowSpeedDecorator(player.model.CurrentStats),
-               // duration
-           // );
+    private void Awake()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
-          //  Destroy(gameObject);
-       // }
-   // }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Player>(out var player))
+        {
+            player.ApplyTemporaryDecorator(
+                stats => new SlowSpeedDecorator(stats, slowMultiplier),
+                duration
+            );
+
+            _audio.Play();
+
+            Destroy(gameObject, _audio.clip.length);
+        }
+    }
 }
