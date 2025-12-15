@@ -2095,9 +2095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 62067003}
+  _animator: {fileID: 62067000}
+  _renderer: {fileID: 62067004}
 --- !u!82 &62067003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2194,6 +2194,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &62067004 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 62066997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63388758
 GameObject:
   m_ObjectHideFlags: 0
@@ -32277,9 +32283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 1058873856}
+  _animator: {fileID: 1058873853}
+  _renderer: {fileID: 1058873857}
 --- !u!82 &1058873856
 AudioSource:
   m_ObjectHideFlags: 0
@@ -32376,6 +32382,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &1058873857 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1058873850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1060074907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36228,9 +36240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 1253702870}
+  _animator: {fileID: 1253702867}
+  _renderer: {fileID: 1253702871}
 --- !u!82 &1253702870
 AudioSource:
   m_ObjectHideFlags: 0
@@ -36327,6 +36339,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &1253702871 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1253702864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1255974990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43455,9 +43473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 1563927219}
+  _animator: {fileID: 1563927216}
+  _renderer: {fileID: 1563927220}
 --- !u!82 &1563927219
 AudioSource:
   m_ObjectHideFlags: 0
@@ -43554,6 +43572,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &1563927220 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1563927213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564590057
 GameObject:
   m_ObjectHideFlags: 0
@@ -55498,9 +55522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3c017b19423f9439cf3756c91ea126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 0}
-  _animator: {fileID: 0}
-  _renderer: {fileID: 0}
+  _audioSource: {fileID: 2096846365}
+  _animator: {fileID: 2096846362}
+  _renderer: {fileID: 2096846366}
 --- !u!82 &2096846365
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55597,6 +55621,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!23 &2096846366 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d85a619a9fa15c846a147a235b95a9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2096846359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2102299994
 GameObject:
   m_ObjectHideFlags: 0
