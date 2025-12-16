@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IInputStrategy
 {
     float GetHorizontal();
-    float GetVertical();
+    //float GetVertical();
 }

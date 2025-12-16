@@ -23,7 +23,7 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
     public void ProcessInputs()
     {
         _model.Xaxi = _inputStrategy.GetHorizontal();
-        _model.Yaxi = _inputStrategy.GetVertical();
+       // _model.Yaxi = _inputStrategy.GetVertical();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -33,7 +33,7 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
 
     public void MovePlayer(Rigidbody rb)
     {
-        Vector3 movement = new Vector3(_model.Xaxi, 0, _model.Yaxi);
+        Vector3 movement = new Vector3(_model.Xaxi, 0, 0.8f);
         rb.MovePosition(rb.position + movement * _model.Velocity * Time.deltaTime);
     }
 
