@@ -18,9 +18,7 @@ public class BulletCollision : MonoBehaviour, ITag
     {
         if (other.gameObject.CompareTag(Tag))
         {
-           _Bullet.ReturnBullet(other.gameObject.GetComponent<IBullet>());
-            //EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
-            print("HOLAS");
+           _Bullet.ReturnBullet(GetComponent<IBullet>());
         }
     }
 }

@@ -24,7 +24,6 @@ public class SpawnerPool : MonoBehaviour, IAutoFire
         {
             IBullet bullet = _bulletFactory.GetBullet();
 
-            // No depende de BulletLifeTime, solo de la abstracción IBullet
             Transform bulletTransform = bullet.Transform;
 
             bulletTransform.position = canon.transform.position + offset;
