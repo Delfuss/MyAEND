@@ -26,7 +26,7 @@ namespace FactoryPool
             var result = Instantiate(_bulletPrefab);
             var collision = result.GetComponent<BulletCollision>();
             if (collision != null)
-                collision.Injection(this); // primero inyecto
+                collision.Injection(this);
 
             return result;
         }

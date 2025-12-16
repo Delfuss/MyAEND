@@ -23,7 +23,6 @@ public class Controller : Iinputs, IPlayerMovement, IPlayerState
     public void ProcessInputs()
     {
         _model.Xaxi = _inputStrategy.GetHorizontal();
-       // _model.Yaxi = _inputStrategy.GetVertical();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
