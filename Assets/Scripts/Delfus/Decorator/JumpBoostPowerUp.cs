@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class JumpBoostPowerUp : MonoBehaviour
 {
-    public float duration = 5f;
+    public float duration = 3f;
     public float jumpMultiplier = 2f;
 
     private AudioSource _audio;
