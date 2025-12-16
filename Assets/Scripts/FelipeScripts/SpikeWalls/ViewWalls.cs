@@ -1,26 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ViewWalls : ISound
+public class ViewWalls
 {
+    private readonly AudioSource _audio;
+    private readonly Animator _animator;
+    private readonly string _trigger;
 
-    private AudioSource _audio;
-    private Animator _Animator;
-
-    public ViewWalls(AudioSource audio,Animator animation)
+    public ViewWalls(AudioSource audio, Animator animator, string trigger = "Damage")
     {
         _audio = audio;
-        _Animator = animation;
+        _animator = animator;
+        _trigger = trigger;
     }
 
-    public void PlaySound()
+    public void PlayFeedback()
     {
-      _audio.Play();
-    }
-
-    public void PlayAnimation()
-    {
-        _Animator.SetTrigger("Damage");
+        _audio?.Play();
+        _animator?.SetTrigger("Damage");
     }
 }

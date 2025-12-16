@@ -1,24 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ControllerWalls : IMechanism
+public class ControllerWalls
 {
-    private ModelWalls _model;
+    private readonly IActive _model;
+    private readonly ViewWalls _view;
 
-    private ViewWalls _view;
-
-    public ControllerWalls(ModelWalls model, ViewWalls view)
-    { 
-      _model = model;
-      _view = view;
-    
-    }
-  
-    public void Mechanism()
+    public ControllerWalls(IActive model, ViewWalls view)
     {
-        _view.PlaySound();
-        _view.PlayAnimation();
-        EventsTypes.InvokeEvent(EventStrings.PlayerDamage);
+        _model = model;
+        _view = view;
+    }
+
+    public void Execute()
+    {
+        if (!_model.IsActive)
+            return;
+
+        _view.PlayFeedback();
     }
 }
