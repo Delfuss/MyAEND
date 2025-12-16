@@ -15,7 +15,6 @@ public class SpikeWall : MonoBehaviour
         {
             DamageAmount = 10f,
             IsActive = true,
-            //HasCollided = false
         };
 
         ViewWalls view = new ViewWalls(audioSource, animator);
@@ -29,7 +28,6 @@ public class SpikeWall : MonoBehaviour
         {
             if (_model.IsActive)
             {
-                //_model.HasCollided = true;
                 _controller.Mechanism();
             }
         }
