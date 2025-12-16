@@ -1,33 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenManager : MonoBehaviour
 {
-    public static ScreenManager Instance;
-
     private ISceneLoader sceneLoader;
-    private IScreenTransition loadingUI;
+    private SimpleLoadingUI loadingUI;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        sceneLoader = GetComponent<ISceneLoader>();
-        loadingUI = GetComponent<IScreenTransition>();
+        sceneLoader = FindObjectOfType<UnitySceneLoader>();
+        loadingUI = FindObjectOfType<SimpleLoadingUI>();
     }
 
     public void LoadScene(string sceneName)
     {
+        if (sceneLoader == null)
+            sceneLoader = FindObjectOfType<UnitySceneLoader>();
+        if (loadingUI == null)
+            loadingUI = FindObjectOfType<SimpleLoadingUI>();
+
         loadingUI?.ShowLoading();
         sceneLoader?.Load(sceneName);
     }

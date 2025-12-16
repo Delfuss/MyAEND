@@ -1,19 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-
-public class SimpleLoadingUI : MonoBehaviour, IScreenTransition
+public class SimpleLoadingUI : MonoBehaviour
 {
-    [SerializeField] GameObject loadingPanel;
-    [SerializeField] Slider progressBar;
+    [SerializeField] private GameObject loadingPanel;
+
+    private void Awake()
+    {
+        ShowLoading();
+    }
 
     public void ShowLoading() => loadingPanel.SetActive(true);
     public void HideLoading() => loadingPanel.SetActive(false);
-    public void SetProgress(float progress)
-    {
-        if (progressBar != null)
-            progressBar.value = progress;
-    }
 }
