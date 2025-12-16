@@ -437,7 +437,7 @@ Transform:
   m_GameObject: {fileID: 11444170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.929, y: -0.5, z: 37.39}
+  m_LocalPosition: {x: -3.929, y: 0, z: 37.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -679,7 +679,7 @@ Transform:
   m_GameObject: {fileID: 18796002}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.071, y: -0.5, z: 41.39}
+  m_LocalPosition: {x: 2.071, y: 0, z: 41.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1566,7 +1566,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d85a619a9fa15c846a147a235b95a9a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3172
+      value: -0.07099992
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d85a619a9fa15c846a147a235b95a9a3,
         type: 3}
@@ -2186,6 +2186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseObstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d85a619a9fa15c846a147a235b95a9a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2704,7 +2709,7 @@ Transform:
   m_GameObject: {fileID: 76098234}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.071, y: -0.5, z: 45.39}
+  m_LocalPosition: {x: 4.071, y: 0, z: 45.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3676,7 +3681,7 @@ Transform:
   m_GameObject: {fileID: 133023103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.071, y: -0.5, z: 61.64}
+  m_LocalPosition: {x: 2.071, y: 0, z: 61.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7800,7 +7805,7 @@ Transform:
   m_GameObject: {fileID: 298814822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9289999, y: -0.5, z: 39.39}
+  m_LocalPosition: {x: -1.9289999, y: 0, z: 39.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7876,7 +7881,7 @@ Transform:
   m_GameObject: {fileID: 306736589}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07099998, y: -0.5, z: 45.39}
+  m_LocalPosition: {x: 0.07099998, y: 0, z: 45.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8760,7 +8765,7 @@ Transform:
   m_GameObject: {fileID: 330739080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9289999, y: -0.5, z: 37.39}
+  m_LocalPosition: {x: -1.9289999, y: 0, z: 37.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9392,7 +9397,7 @@ Transform:
   m_GameObject: {fileID: 351476545}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.071, y: -0.5, z: 39.39}
+  m_LocalPosition: {x: 2.071, y: 0, z: 39.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14369,7 +14374,7 @@ Transform:
   m_GameObject: {fileID: 538224035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9289999, y: -0.5, z: 41.39}
+  m_LocalPosition: {x: -1.9289999, y: 0, z: 41.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21522,7 +21527,7 @@ Transform:
   m_GameObject: {fileID: 616298942}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.071, y: -0.5, z: 37.39}
+  m_LocalPosition: {x: 4.071, y: 0, z: 37.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22469,7 +22474,7 @@ Transform:
   m_GameObject: {fileID: 651915115}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.929, y: -0.5, z: 41.39}
+  m_LocalPosition: {x: -3.929, y: 0, z: 41.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23942,7 +23947,7 @@ Transform:
   m_GameObject: {fileID: 737978254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.929, y: -0.5, z: 43.39}
+  m_LocalPosition: {x: -3.929, y: 0, z: 43.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26419,7 +26424,7 @@ Transform:
   m_GameObject: {fileID: 835072722}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07099998, y: -0.5, z: 43.39}
+  m_LocalPosition: {x: 0.07099998, y: 0, z: 43.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28955,7 +28960,7 @@ Transform:
   m_GameObject: {fileID: 932883380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9289999, y: -0.5, z: 45.39}
+  m_LocalPosition: {x: -1.9289999, y: 0, z: 45.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32554,6 +32559,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BaseObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d85a619a9fa15c846a147a235b95a9a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36456,7 +36466,7 @@ Transform:
   m_GameObject: {fileID: 1246448477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9289999, y: -0.5, z: 43.39}
+  m_LocalPosition: {x: -1.9289999, y: 0, z: 43.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36712,6 +36722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BaseObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d85a619a9fa15c846a147a235b95a9a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39768,7 +39783,7 @@ Transform:
   m_GameObject: {fileID: 1344240824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.071, y: -0.5, z: 39.39}
+  m_LocalPosition: {x: 4.071, y: 0, z: 39.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43009,7 +43024,7 @@ Transform:
   m_GameObject: {fileID: 1499884149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.071, y: -0.5, z: 43.39}
+  m_LocalPosition: {x: 4.071, y: 0, z: 43.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44591,6 +44606,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseObstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d85a619a9fa15c846a147a235b95a9a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45650,7 +45670,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d85a619a9fa15c846a147a235b95a9a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5064
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d85a619a9fa15c846a147a235b95a9a3,
         type: 3}
@@ -47297,7 +47317,7 @@ Transform:
   m_GameObject: {fileID: 1653301028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.929, y: -0.5, z: 39.39}
+  m_LocalPosition: {x: -3.929, y: 0, z: 39.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49743,7 +49763,7 @@ Transform:
   m_GameObject: {fileID: 1750428905}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.071, y: -0.5, z: 41.39}
+  m_LocalPosition: {x: 4.071, y: 0, z: 41.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55505,7 +55525,7 @@ Transform:
   m_GameObject: {fileID: 2047576839}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.929, y: -0.5, z: 45.39}
+  m_LocalPosition: {x: -3.929, y: 0, z: 45.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56760,6 +56780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseObstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d85a619a9fa15c846a147a235b95a9a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57447,7 +57472,7 @@ Transform:
   m_GameObject: {fileID: 2130687525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.071, y: -0.5, z: 37.39}
+  m_LocalPosition: {x: 2.071, y: 0, z: 37.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
