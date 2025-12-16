@@ -34,9 +34,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _controller.ProcessInputs();
- 
-        _controller.ProcessInputs();
+        _controller.ProcessInputs(); 
     }
 
     private void FixedUpdate()
