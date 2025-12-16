@@ -8,7 +8,6 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        // Array de Estrategias de la abstraccion MoveStrategy
         MoveStrategy[] strategies = new MoveStrategy[]
         {
             new PointToPointMovement(spikeTransform, 1f),
