@@ -5,5 +5,5 @@ using UnityEngine;
 public class NormalInputStrategy : IInputStrategy
 {
     public float GetHorizontal() => Input.GetAxis("Horizontal");
-    public float GetVertical() => Input.GetAxis("Vertical");
+   // public float GetVertical() => Input.GetAxis("Vertical");
 }
