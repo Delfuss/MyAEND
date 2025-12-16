@@ -20,9 +20,9 @@ public class PointToPointMovement : MoveStrategy
 
     public override void ExecuteMove()
     {
-        float dir = AbleToMove ? 1f : -1f; // es si move es true dor vale 1 sino es -1 dir.
+        float dir = AbleToMove ? 1f : -1f; 
 
-        t += Time.deltaTime * _speed * dir;  // si se mueve la trampa multiplico por 1 si no por -1 (dir) por ende va en negativo o positivo
+        t += Time.deltaTime * _speed * dir;
 
         if (t >= 1f)
         {

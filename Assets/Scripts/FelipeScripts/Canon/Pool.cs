@@ -7,13 +7,13 @@ namespace FactoryPool
 {
     public class Pool<T> where T : IBullet
     {
-        Func<T> _factoryMethod; //Aca voy a guardar COMO se crea el objeto
+        Func<T> _factoryMethod; 
 
-        Action<T> _turnOnCallback; //Aca voy a guardar como se prende el objeto antes de darselo al cliente
+        Action<T> _turnOnCallback; 
 
-        Action<T> _turnOffCallback; //Aca voy a guardar como se apaga el objeto una vez regrese al pool
+        Action<T> _turnOffCallback;
 
-        List<T> _currentStock; //Mi "cajon" donde voy a guardar los objetos disponibles para su uso
+        List<T> _currentStock;
 
         public Pool(Func<T> factoryMethod, Action<T> turnOnCallback, Action<T> turnOffCallback, int initialAmount)
         {
@@ -40,19 +40,15 @@ namespace FactoryPool
 
             if (_currentStock.Count != 0)
             {
-                //lo obtengo de la lista
                 objectToReturn = _currentStock[0];
 
-                //lo saco de la lista
                 _currentStock.RemoveAt(0);
             }
-            else //Si no tengo algo en la lista
+            else 
             {
-                //lo creo
                 objectToReturn = _factoryMethod();
             }
 
-            //lo prendo
             _turnOnCallback(objectToReturn);
 
             return objectToReturn;
