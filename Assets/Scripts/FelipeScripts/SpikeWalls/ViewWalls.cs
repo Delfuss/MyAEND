@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ViewWalls : ISound,IAnimation
+public class ViewWalls : ISound
 {
 
     private AudioSource _audio;
