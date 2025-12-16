@@ -7,7 +7,7 @@ namespace FactoryPool
     {
         public Transform Transform => this.transform;
 
-        public float LifeTime { get; set; } = 9f;
+        public float LifeTime { get; set; } = 4f;
 
         private float _currentLifeTime;
 

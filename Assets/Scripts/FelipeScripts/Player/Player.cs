@@ -32,8 +32,10 @@ public class Player : MonoBehaviour
         _controller = new Controller(_baseModel, view, _rb);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
+        _controller.ProcessInputs();
+ 
         _controller.ProcessInputs();
     }
 
@@ -93,3 +95,6 @@ public class Player : MonoBehaviour
         _controller.SetInputStrategy(strategy);
     }
 }
+
+
+
