@@ -7,15 +7,20 @@ public class DeadSystem : MonoBehaviour,ITag
 {
     private ILoad _Load;
 
-    [SerializeField] Load LoadScript;  
+    [SerializeField] int IndexToLoad;
+
+    private void Start()
+    {
+        _Load = GetComponent<ILoad>();
+    }
+
     public string Tag { get; private set; } = "Obstacle";
 
-    [SerializeField] int IndexToLoad;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag(Tag))
         {
-            LoadScript.StartCoroutine(LoadScript.LoadScene(IndexToLoad));
+            StartCoroutine(_Load.LoadScene(IndexToLoad));
         }
     }
 
@@ -23,7 +28,7 @@ public class DeadSystem : MonoBehaviour,ITag
     {
         if (other.gameObject.CompareTag(Tag))
         {
-            LoadScript.StartCoroutine(LoadScript.LoadScene(IndexToLoad));
+            StartCoroutine(_Load.LoadScene(IndexToLoad));
         }
     }
 }
