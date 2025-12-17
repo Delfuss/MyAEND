@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Animator))]
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IForceJump
 {
     private Model _baseModel;              
     private IPlayerStats _currentStats;        
@@ -91,6 +91,15 @@ public class Player : MonoBehaviour
     public void SetInputStrategy(IInputStrategy strategy)
     {
         _controller.SetInputStrategy(strategy);
+    }
+    public void ForceJump(float jumpMultiplier)
+    {
+        ApplyTemporaryDecorator(
+            stats => new JumpBoostDecorator(stats, jumpMultiplier),
+            0.2f
+        );
+
+        _baseModel.Jump = true;
     }
 }
 

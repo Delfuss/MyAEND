@@ -21,7 +21,7 @@ public class SpeedBoostPowerUp : MonoBehaviour
         {
             player.ApplyTemporaryDecorator(
                 stats => new SpeedBoostDecorator(stats, speedMultiplier),
-                duration
+                duration        
             );
 
             _audio.Play();
